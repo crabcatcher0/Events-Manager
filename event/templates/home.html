@@ -1,0 +1,49 @@
+{% include "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static "css/home.css" %}">
+
+<!-- hero-->
+<div class="hero-section bg-dark text-white py-5">
+    <div class="container text-center">
+      <h2 class="display-4 fw-bold lh-1 mb-3 mt-5">Your Events Organizer.</h2>
+      <p class="h6">Bringing your events to life, one detail at a time.</p>
+      <a href="#" class="btn btn-success btn-lg mt-2" style="font-weight: bold;">What's New?</a>
+    </div>
+  </div>
+
+<!-- featured-->
+<div class="container icon-grid mt-5">
+  <h2 class="text-center mb-5">Featured</h2>
+  <div class="row text-center">
+      <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="icon-container">
+              <i class="fas fa-calendar-alt icon"></i>
+              <p class="icon-text">Event Scheduling</p>
+          </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="icon-container">
+              <i class="fas fa-ticket-alt icon"></i>
+              <p class="icon-text">Ticketing System</p>
+          </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="icon-container">
+              <i class="fas fa-map-marker-alt icon"></i>
+              <p class="icon-text">Venue Selection</p>
+          </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="icon-container">
+              <i class="fas fa-money-bill-alt icon"></i>
+              <p class="icon-text">Financial</p>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
