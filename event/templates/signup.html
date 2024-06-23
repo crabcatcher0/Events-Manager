@@ -1,0 +1,12 @@
+{% include "base.html" %}
+{% block content %}
+<div class="container">
+    <h1 class="mt-2">Registration.</h1>
+    <form class="mt-5" action="{% url 'signup' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="Submit" value="Submit">
+    </form>
+    <a href="{% url 'login' %}">Login</a>
+</div>
+{% endblock %}

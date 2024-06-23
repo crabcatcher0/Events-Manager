@@ -1,18 +1,15 @@
 .icon-container {
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
-    text-align: left;
+    text-align: center;
     margin-right: 0; 
     margin-left: 0;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .icon-container {
-        flex: 0 0 50%; /* Ensure two columns on small screens */
-        max-width: 50%; /* Limit width to 50% */
-        box-sizing: border-box; /* Ensure padding and border are included in width */
-        padding: 10px, 0; /* Reset padding to maintain consistency */
+        text-align: left;
     }
 }
