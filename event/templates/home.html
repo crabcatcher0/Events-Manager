@@ -13,33 +13,72 @@
   </div>
 
 <!-- featured-->
-<div class="container icon-grid mt-2">
-  <h2 class="text-center mb-4">Features:</h2>
-  <div class="row text-center">
-      <div class="col-lg-4 col-md-6 col-sm-6">
-          <div class="icon-container">
-              <i class="fas fa-calendar-alt icon"></i>
-              <p class="icon-text" style="font-weight: bold;  margin-bottom: 4px;">Event Scheduling</p>
-              <span>Efficiently plan and organize events of any scale.</span>
+<div class="container-fluid icon-grid">
+  <div class="container">
+      <h2 class="text-center mb-4 text-white">Features:</h2>
+      <div class="row text-center">
+          <div class="col-lg-4 col-md-6 col-sm-6">
+              <a href="#" class="feature-link no-decoration">
+                  <div class="icon-container">
+                      <i class="fas fa-calendar-alt icon"></i>
+                      <p class="icon-text" style="font-weight: bold; margin-bottom: 4px;">Event Scheduling</p>
+                      <span>Efficiently plan and organize events of any scale.</span>
+                  </div>
+              </a>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+              <a href="#" class="feature-link no-decoration">
+                  <div class="icon-container">
+                      <i class="fas fa-ticket-alt icon"></i>
+                      <p class="icon-text" style="font-weight: bold; margin-bottom: 4px;">Ticketing System</p>
+                      <span>Access your favorite tickets on-the-go via mobile devices.</span>
+                  </div>
+              </a>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+              <a href="#" class="feature-link no-decoration">
+                  <div class="icon-container">
+                      <i class="fas fa-map-marker-alt icon"></i>
+                      <p class="icon-text" style="font-weight: bold; margin-bottom: 4px;">Venue Selection</p>
+                      <span>Book venues tailored to your event requirements.</span>
+                  </div>
+              </a>
           </div>
       </div>
-      <div class="col-lg-4 col-md-6 col-sm-6">
-          <div class="icon-container">
-              <i class="fas fa-ticket-alt icon"></i>
-              <p class="icon-text" style="font-weight: bold;  margin-bottom: 4px;">Ticketing System</p>
-              <span>Access tickets on-the-go via mobile devices.
-            </span>
-            </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-6">
-          <div class="icon-container">
-              <i class="fas fa-map-marker-alt icon"></i>
-              <p class="icon-text" style="font-weight: bold;  margin-bottom: 4px;">Venue Selection</p>
-              <span>Book venues with ease, tailored to your event size and requirements.
-            </span>
-          </div>
-      </div>  
   </div>
 </div>
+
+<!-- footer -->
+<footer class="bg-dark text-white py-5">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+              <h5>Quick Links</h5>
+              <ul class="list-unstyled footer-links">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Services</a></li>
+                  <li><a href="#">Contact</a></li>
+              </ul>
+          </div>
+          <div class="col-md-6">
+              <h5>Subscribe to Our Newsletter</h5>
+              <form action="#" method="post">
+                  <div class="input-group mb-3">
+                      <input type="email" class="form-control" placeholder="Your Email Address" aria-label="Your Email Address" aria-describedby="subscribeBtn">
+                      <button class="btn btn-success" type="submit" id="subscribeBtn">Subscribe</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+      <div class="row mt-4">
+          <div class="col">
+              <p>&copy; 2024 My Events. All rights reserved.</p>
+          </div>
+      </div>
+  </div>
+</footer>
+
+
 
 {% endblock %}

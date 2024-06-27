@@ -1,4 +1,11 @@
-{% include "base.html"%}
+{% extends "base.html" %}
 {% block content %}
-<h1>This is organize page</h1>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Organize Your Event</h2>
+    <form action="{% url 'organize' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 {% endblock %}
