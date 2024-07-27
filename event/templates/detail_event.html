@@ -1,0 +1,35 @@
+{% load static %}
+{% include "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/detail_event.css' %}">
+
+<div class="container">
+    <h1 class="mb-4 text-center">Event Detail:</h1>
+    <div class="card border-light shadow-sm rounded">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="card-title">{{ detail_data.event_name }}</h5>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h6 class="card-subtitle mb-2 text-muted">Event Type: {{ detail_data.event_type|capfirst }}</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="card-text mb-2"><strong>Date:</strong> {{ detail_data.event_date }}</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="card-text mb-2"><strong>Time:</strong> {{ detail_data.event_time }}</p>
+                </div>
+            </div>
+            <p class="card-text mb-2"><strong>Description:</strong> {{ detail_data.event_description }}</p>
+            <p class="card-text mb-1"><strong>Organized by:</strong> {{ detail_data.your_name }}</p>
+            <p class="card-text mb-1"><strong>Contact Email:</strong> <a href="mailto:{{ detail_data.your_email }}">{{ detail_data.your_email }}</a></p>
+            <p class="card-text mb-3"><strong>Contact Phone:</strong> <a href="tel:{{ detail_data.your_phone }}">{{ detail_data.your_phone }}</a></p>
+            <a href="{% url 'all_events' %}" class="btn btn-success">Back to Events</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

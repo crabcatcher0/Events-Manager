@@ -1,0 +1,43 @@
+/* Custom styles for detail_event page */
+.card {
+    border: 1px solid #ddd;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-subtitle {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.card-text {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-primary:hover {
+    background-color: #004080;
+    border-color: #003366;
+}
+
+.container {
+    max-width: 800px;
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding: 0 1rem;
+    }
+}

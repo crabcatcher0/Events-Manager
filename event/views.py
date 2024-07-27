@@ -10,7 +10,6 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
-    
     return render(request, "home.html")
 
 
@@ -99,3 +98,22 @@ def organize_event(request):
         'form': form
     }
     return render(request, "organize.html", context)
+
+
+
+def browse_events(request):
+    all_events = OrganizeEvent.objects.order_by('-created_at')
+    context = {
+        'all_events':all_events
+    }
+    return render(request, "all_event.html", context)
+
+
+
+def browse_detail_event(request, id):
+    detail_data = get_object_or_404(OrganizeEvent, pk=id)
+    context = {
+        'detail_data':detail_data
+    }
+
+    return render(request, "detail_event.html", context)

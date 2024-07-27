@@ -9,5 +9,8 @@ urlpatterns = [
     path('login/', signin, name='login'),
     path('account/<int:id>/', profile, name='account'),
     path('logout/', signoff, name='logout'),
+    path('all_events/', browse_events, name='all_events'),
+    path('detail_events/<int:id>/', browse_detail_event, name='detail_events'),
+
 ]
 
