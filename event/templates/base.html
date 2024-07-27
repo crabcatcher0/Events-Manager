@@ -22,9 +22,11 @@
             <a class="nav-link text-white" href="{% url 'home' %}">Home</a>
           </li>
 
+          {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link text-white" href="{% url 'organize'%}">Organize</a>
           </li>
+          {% endif %}
 
           {% if not request.user.is_authenticated %}
           <li class="nav-item">
@@ -49,12 +51,10 @@
     </div>
   </nav>
 
-  <div class="content container">
+  <div class="content-container">
     {% block content %}
     {% endblock %}
   </div>
-
-
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

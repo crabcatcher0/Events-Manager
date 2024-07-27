@@ -4,6 +4,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegistrationForm, OrganizeEventForm
 from django.contrib import messages
+from .models import OrganizeEvent
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def home(request):
@@ -42,7 +45,7 @@ def signin(request):
 
         if user is not None:
             login(request, user)
-            return redirect('account')
+            return redirect('account', id=user.id)
         else:
             messages.error(request, "Wrong Username or Password!")
             return redirect('login')
@@ -72,18 +75,27 @@ def signoff(request):
     return render (request, "home.html")
 
 
-
+@login_required
 def organize_event(request):
     if request.method == 'POST':
         form = OrganizeEventForm(request.POST)
-
         if form.is_valid():
-            form.save()
-        
+            if request.user.is_authenticated:
+                if OrganizeEvent.objects.filter(user=request.user).count() < 5:
+                    event = form.save(commit=False)
+                    event.user = request.user
+                    event.save()
+                    messages.success(request, "Event organized successfully!")
+                    return redirect('account')
+                else:
+                    messages.error(request, "You can only organize up to 5 events. Please Upgrade Your Account.")
+            else:
+                messages.error(request, "You must be logged in to organize an event.")
+                return redirect('login')
     else:
         form = OrganizeEventForm()
 
     context = {
-        'form':form
-        }
+        'form': form
+    }
     return render(request, "organize.html", context)

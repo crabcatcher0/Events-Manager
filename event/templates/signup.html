@@ -1,12 +1,88 @@
-{% include "base.html" %}
+{% extends "base.html" %}
+{% load static %}
 {% block content %}
-<div class="container">
-    <h1 class="mt-2">Registration.</h1>
-    <form class="mt-5" action="{% url 'signup' %}" method="POST">
+
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+
+<div class="signup-container bg-dark text-white">
+    <h1 class="title">Registration.</h1>
+
+    {% if form.non_field_errors %}
+        <span class="error">
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </span>
+    {% endif %}
+
+    <form class="mt-3" action="{% url 'signup' %}" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="Submit" value="Submit">
+        
+        <div class="form-row">
+            <div class="form-group">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <span class="error">
+                        {{ form.username.errors }}
+                    </span>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <span class="error">
+                        {{ form.email.errors }}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+                {% if form.first_name.errors %}
+                    <span class="error">
+                        {{ form.first_name.errors }}
+                    </span>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+                {% if form.last_name.errors %}
+                    <span class="error">
+                        {{ form.last_name.errors }}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <span class="error">
+                        {{ form.password1.errors }}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <span class="error">
+                        {{ form.password2.errors }}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+
+        <input type="submit" value="Submit">
+        <a class="login-a" href="{% url 'login' %}">Already have a account? Login</a>
     </form>
-    <a href="{% url 'login' %}">Login</a>
 </div>
 {% endblock %}

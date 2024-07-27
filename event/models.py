@@ -1,5 +1,6 @@
 from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -17,9 +18,10 @@ class OrganizeEvent(models.Model):
     event_description = models.TextField(max_length=1000, null=False)
     your_name = models.CharField(max_length=30, null=False)
     your_email = models.EmailField(null=False)
-    your_phone = PhoneNumberField(null = False)
+    your_phone = models.IntegerField(null = False)
     event_type = models.CharField(max_length=20, choices=EVENT_TYPES, null=False)
     event_time = models.TimeField(null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE) 
 
     def __str__(self):
         return self.event_name
