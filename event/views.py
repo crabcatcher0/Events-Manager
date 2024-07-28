@@ -58,8 +58,7 @@ def registration(request):
     return render(request, "signup.html", {'form':form})
 
 
-def signin(request):
-    
+def signin(request):    
     form = AuthenticationForm()
 
     if request.method == 'POST':
@@ -83,10 +82,13 @@ def signin(request):
     return render(request, "login.html", context)
 
 
+@login_required
 def profile(request, id):
     data = get_object_or_404(User, pk=id)
+    my_data = OrganizeEvent.objects.filter(user=request.user)
     context = {
-        'data':data
+        'data':data,
+        'my_event':my_data
         }    
     
     return render(request, "account.html", context)
@@ -125,6 +127,10 @@ def organize_event(request):
 
 
 
+"""
+   Get's data from weather API.
+   Region specific only for Kathmandu
+"""
 def browse_events(request):
     all_events = OrganizeEvent.objects.order_by('-created_at')
     location = "kathmandu"
@@ -144,8 +150,6 @@ def browse_events(request):
         current_temp = data.get('current', {}).get('temp_c', '')
         condition = data.get('current', {}).get('condition', {}).get('text', '')
         cond_icon = data.get('current', {}).get('condition', {}).get('icon', '')
-
-
 
 
     context = {
@@ -171,3 +175,4 @@ def browse_detail_event(request, id):
 
 def volunteer(request):
     return render(request, "volunteer.html")
+

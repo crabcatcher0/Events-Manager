@@ -13,6 +13,12 @@ class OrganizeEvent(models.Model):
         ('meet and greet', 'Meet and Greet'),
         ('other', 'Other'),
     ]
+
+    EVENT_STATUS = [
+        ('ongoing', 'Ongoing'),
+        ('completed', 'Completed'),
+        ('discarded', 'Discarded')
+    ]
     event_name = models.CharField(max_length= 50, null=False)
     event_date = models.DateField(null= False)
     event_description = models.TextField(max_length=1000, null=False)
@@ -24,6 +30,7 @@ class OrganizeEvent(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE) 
     created_at = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=50, blank=False)
+    status = models.CharField(max_length=20, choices=EVENT_STATUS, null=False)
 
     def __str__(self):
         return self.event_name

@@ -15,9 +15,13 @@
         </p>
     </div>
     <button class="btn btn-success">Explore</button>
+    {% if user.is_authenticated %}
+    <div></div>
+    {% else %}
     <div class="mt-3">
         <p>To create your own program, please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'signup' %}">sign up</a>.</p>
     </div>
+    {% endif %}
 </div>
 
 {% endblock %}

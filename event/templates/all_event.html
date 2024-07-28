@@ -28,12 +28,6 @@
                 <div class="col-md-6">
                     <p><strong>Current Temp:</strong> {% if current_temp %}{{ current_temp }} °C{% endif %}</p>
                 </div>
-                
-                {% comment %} <div class="col-md-12 text-center">
-                    {% if cond_icon %}
-                        <img src="{{ cond_icon }}" alt="Weather Condition Icon" class="weather-icon">
-                    {% endif %}
-                </div> {% endcomment %}
             </div>
         </div>
     </div>
@@ -53,6 +47,7 @@
                     <p class="card-text mb-1"><strong>Time:</strong> {{ event.event_time }}</p>
                     <p class="card-text mb-2"><strong>Organized by:</strong> {{ event.your_name }}</p>
                     <p class="card-text mb-2"><strong>Location:</strong> {{ event.location }}</p>
+                    <h6 class="card-subtitle mb-2 text-muted">Event status: {{ event.status|capfirst }}</h6>
                     <a href="{% url 'detail_events' event.id %}" class="btn btn-success">More Details</a>
                 </div>
             </div>
