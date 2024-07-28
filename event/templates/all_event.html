@@ -3,18 +3,56 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/all_events.css' %}">
 
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card text-center bg-dark text-white">
+            <h2>Weather Today</h2>
+        </div>
+        <div class="card-body bg-dark text-white">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Location:</strong> {% if date_data %}{{ date_data }}{% endif %}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Time Zone:</strong> {% if timezone %}{{ timezone }}{% endif %}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Condition:</strong> {% if condition %}{{ condition }}{% endif %}</p>
+                    {% if cond_icon %}
+                    <img src="{{ cond_icon }}" alt="Weather Condition Icon" class="weather-icon" style="height: 35px;">
+                {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Current Temp:</strong> {% if current_temp %}{{ current_temp }} °C{% endif %}</p>
+                </div>
+                
+                {% comment %} <div class="col-md-12 text-center">
+                    {% if cond_icon %}
+                        <img src="{{ cond_icon }}" alt="Weather Condition Icon" class="weather-icon">
+                    {% endif %}
+                </div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="container mt-4">
     <h1 class="mb-4 text-center">ALL EVENTS</h1>
     <div class="row">
         {% for event in all_events %}
         <div class="col-md-3 mb-4">
-            <div class="card">
+            <div class="card bg-dark text-white">
                 <div class="card-body">
                     <h5 class="card-title">{{ event.event_name | truncatewords:2}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Event type: {{ event.event_type|capfirst }}</h6>
                     <p class="card-text mb-1"><strong>Date:</strong> {{ event.event_date }}</p>
                     <p class="card-text mb-1"><strong>Time:</strong> {{ event.event_time }}</p>
                     <p class="card-text mb-2"><strong>Organized by:</strong> {{ event.your_name }}</p>
+                    <p class="card-text mb-2"><strong>Location:</strong> {{ event.location }}</p>
                     <a href="{% url 'detail_events' event.id %}" class="btn btn-success">More Details</a>
                 </div>
             </div>

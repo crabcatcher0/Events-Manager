@@ -8,6 +8,7 @@
     <div class="container text-center">
       <h2 class="display-4 fw-bold lh-1 mb-3 mt-5">Your Events Organizer.</h2>
       <p class="h6">Bringing your events to life, one detail at a time.</p>
+      <p class="navbar-brand" style="font-weight: bold; color: #c2c2e9;">Nepali Date and Time: {% if date_data %} {{ date_data }} :: {{ time_zone }} {% else %} No data available {% endif %}</p>
       <a href="{% url 'all_events' %}" class="btn btn-success btn-lg mt-2" style="font-weight: bold;">What's New?</a>
     </div>
   </div>
@@ -15,7 +16,7 @@
 <!-- featured-->
 <div class="container-fluid icon-grid">
   <div class="container">
-      <h2 class="text-center mb-4 text-white">Features:</h2>
+      <h2 class="text-center mb-4 text-white">FEATURES:</h2>
       <div class="row text-center">
           <div class="col-lg-4 col-md-6 col-sm-6">
               <a href="#" class="feature-link no-decoration">
@@ -46,6 +47,48 @@
           </div>
       </div>
   </div>
+</div>
+
+<!-- volunteer -->
+<h2 class="text-center mb-4 mt-4 text-white">JOIN OUR VOLUNTEER PROGRAMS:</h2>
+
+<div id="volunteerCarousel" class="carousel slide custom-carousel" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#volunteerCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#volunteerCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#volunteerCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'images/image1.jpg' %}" class="d-block w-100 h-20 carousel-img" alt="Volunteer Image 1">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Volunteer Event 1</h5>
+                <p>Description of the volunteer event 1.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/image2.jpg' %}" class="d-block w-100 h-20 carousel-img" alt="Volunteer Image 2">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Volunteer Event 2</h5>
+                <p>Description of the volunteer event 2.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/image3.jpg' %}" class="d-block w-100 h-20 carousel-img" alt="Volunteer Image 3">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Volunteer Event 3</h5>
+                <p>Description of the volunteer event 3.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#volunteerCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#volunteerCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
 
 <!-- footer -->

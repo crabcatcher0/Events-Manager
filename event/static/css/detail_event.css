@@ -1,4 +1,3 @@
-/* Custom styles for detail_event page */
 .card {
     border: 1px solid #ddd;
 }
@@ -35,6 +34,7 @@
 .container {
     max-width: 800px;
 }
+
 
 @media (max-width: 767px) {
     .container {

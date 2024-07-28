@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 
 <div class="signup-container bg-dark text-white">
-    <h1 class="title">Registration.</h1>
+    <h1 class="title">REGISTER:</h1>
 
     {% if form.non_field_errors %}
         <span class="error">
@@ -15,7 +15,7 @@
         </span>
     {% endif %}
 
-    <form class="mt-3" action="{% url 'signup' %}" method="POST">
+    <form class="mt-2" action="{% url 'signup' %}" method="POST">
         {% csrf_token %}
         
         <div class="form-row">

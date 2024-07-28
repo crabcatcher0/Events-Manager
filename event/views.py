@@ -6,11 +6,36 @@ from .forms import RegistrationForm, OrganizeEventForm
 from django.contrib import messages
 from .models import OrganizeEvent
 from django.contrib.auth.decorators import login_required
+import requests
+import json
+from datetime import datetime
+from event_management.secrete import API_KEY
+
 
 # Create your views here.
 
 def home(request):
-    return render(request, "home.html")
+    url =  "http://worldtimeapi.org/api/timezone/Asia/Kathmandu"
+    try:
+        respose = requests.get(url)
+        data = respose.json()
+        date_data = data.get('datetime')
+        time_zone = data.get('timezone')
+    except Exception as e:
+        return render(request, {'error':str(e)})
+     
+    if date_data:
+        datetime_obj = datetime.fromisoformat(date_data.rstrip('Z'))
+        formatted_date_time = datetime_obj.strftime('%Y-%m-%d %H:%M')
+    else:
+        formatted_date_time = None
+
+    context = {
+        'date_data':formatted_date_time,
+        'time_zone':time_zone
+    }
+    return render(request, "home.html", context)
+
 
 
 def registration(request):
@@ -60,7 +85,6 @@ def signin(request):
 
 def profile(request, id):
     data = get_object_or_404(User, pk=id)
-
     context = {
         'data':data
         }    
@@ -103,8 +127,34 @@ def organize_event(request):
 
 def browse_events(request):
     all_events = OrganizeEvent.objects.order_by('-created_at')
+    location = "kathmandu"
+    url ="http://api.weatherapi.com/v1/current.json"
+
+    params = {
+        'key': API_KEY,
+        'q': location
+    }
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        response.raise_for_status()
+        data = response.json()
+        date_data = data.get('location', {}).get('name', '')
+        timezone = data.get('location', {}).get('localtime', '')
+        current_temp = data.get('current', {}).get('temp_c', '')
+        condition = data.get('current', {}).get('condition', {}).get('text', '')
+        cond_icon = data.get('current', {}).get('condition', {}).get('icon', '')
+
+
+
+
     context = {
-        'all_events':all_events
+        'all_events':all_events,
+        'date_data':date_data,
+        'timezone':timezone,
+        'current_temp':current_temp,
+        'condition':condition,
+        'cond_icon':cond_icon
     }
     return render(request, "all_event.html", context)
 
@@ -117,3 +167,7 @@ def browse_detail_event(request, id):
     }
 
     return render(request, "detail_event.html", context)
+
+
+def volunteer(request):
+    return render(request, "volunteer.html")

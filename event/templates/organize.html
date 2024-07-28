@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Organize Your Event</h2>
+    <h2 class="text-center mb-4">ORGANIZE EVENT:</h2>
     <form action="{% url 'organize' %}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}

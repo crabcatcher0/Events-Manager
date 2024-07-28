@@ -4,13 +4,13 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-
 class OrganizeEvent(models.Model):
     EVENT_TYPES = [
         ('conference', 'Conference'),
         ('workshop', 'Workshop'),
         ('seminar', 'Seminar'),
         ('webinar', 'Webinar'),
+        ('meet and greet', 'Meet and Greet'),
         ('other', 'Other'),
     ]
     event_name = models.CharField(max_length= 50, null=False)
@@ -23,6 +23,7 @@ class OrganizeEvent(models.Model):
     event_time = models.TimeField(null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE) 
     created_at = models.DateTimeField(auto_now_add=True)
+    location = models.CharField(max_length=50, blank=False)
 
     def __str__(self):
         return self.event_name
