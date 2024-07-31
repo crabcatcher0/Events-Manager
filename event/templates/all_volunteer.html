@@ -1,0 +1,21 @@
+{% load static %}
+{% include "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{% static "css/all_volunteer.css" %}">
+<div class="container">
+    <div class="volunteer-list">
+        <h1 class="my-4 text-center">Browse All Programs</h1>
+        <ul class="list-group">
+            <li class="list-group-item mb-2">
+                <a href="#" class="text-decoration-none">Program 1</a>
+            </li>
+            <li class="list-group-item mb-2">
+                <a href="#" class="text-decoration-none">Program 2</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#" class="text-decoration-none">Program 3</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

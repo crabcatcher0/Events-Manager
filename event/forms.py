@@ -23,4 +23,4 @@ class RegistrationForm(UserCreationForm):
 class OrganizeEventForm(forms.ModelForm):
     class Meta:
         model = OrganizeEvent
-        fields = '__all__'
+        exclude = ['user']

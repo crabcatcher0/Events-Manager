@@ -14,12 +14,12 @@
             If you're interested in joining our volunteer program, please contact us or sign up through our website.
         </p>
     </div>
-    <button class="btn btn-success">Explore</button>
+    <a class="btn btn-success" href="{% url 'all_volunteer' %}">Explore</a>
     {% if user.is_authenticated %}
     <div></div>
     {% else %}
     <div class="mt-3">
-        <p>To create your own program, please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'signup' %}">sign up</a>.</p>
+        <p>To create your own program, please <a href="{% url 'login' %}" style="text-decoration: none;">log in</a> or <a href="{% url 'signup' %}" style="text-decoration: none;">sign up</a>.</p>
     </div>
     {% endif %}
 </div>

@@ -33,6 +33,7 @@
     </div>
 </div>
 
+<!-- <<<<  all events section  >>>> -->
 
 <div class="container mt-4">
     <h1 class="mb-4 text-center">ALL EVENTS</h1>
@@ -48,6 +49,7 @@
                     <p class="card-text mb-2"><strong>Organized by:</strong> {{ event.your_name }}</p>
                     <p class="card-text mb-2"><strong>Location:</strong> {{ event.location }}</p>
                     <h6 class="card-subtitle mb-2 text-muted">Event status: {{ event.status|capfirst }}</h6>
+                    <p class="card-subtitle mb-2 text-muted" style="font-size: 0.9rem;">Posted at: {{ event.created_at | date:"F j, Y" }}</p>
                     <a href="{% url 'detail_events' event.id %}" class="btn btn-success">More Details</a>
                 </div>
             </div>

@@ -1,0 +1,21 @@
+
+.list-group {
+    border-radius: 0px;
+}
+
+.list-group-item {
+    background-color: #ededed; 
+    color: black;
+    font-size: 1.2rem;
+}
+
+.list-group-item a {
+    font-weight: bold;
+    color: black; 
+    text-decoration: none; 
+}
+
+.list-group-item a:hover {
+    color: blue; 
+    font-size: 1.3rem; 
+}

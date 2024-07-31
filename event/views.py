@@ -11,6 +11,7 @@ import json
 from datetime import datetime
 from event_management.secrete import API_KEY
 import asyncio
+import aiohttp
 
 
 # Create your views here.
@@ -112,7 +113,7 @@ def organize_event(request):
                     event.user = request.user
                     event.save()
                     messages.success(request, "Event organized successfully!")
-                    return redirect('account')
+                    return redirect('account', id=request.user.id)
                 else:
                     messages.error(request, "You can only organize up to 5 events. Please Upgrade Your Account.")
             else:
@@ -132,6 +133,7 @@ def organize_event(request):
    Get's data from weather API.
    Region specific only for Kathmandu
 """
+
 def browse_events(request):
     all_events = OrganizeEvent.objects.order_by('-created_at')
     location = "kathmandu"
@@ -177,4 +179,5 @@ def browse_detail_event(request, id):
 def volunteer(request):
     return render(request, "volunteer.html")
 
-
+def all_volunteer(request):
+    return render(request, "all_volunteer.html")
