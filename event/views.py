@@ -10,6 +10,7 @@ import requests
 import json
 from datetime import datetime
 from event_management.secrete import API_KEY
+import asyncio
 
 
 # Create your views here.
@@ -175,4 +176,5 @@ def browse_detail_event(request, id):
 
 def volunteer(request):
     return render(request, "volunteer.html")
+
 
