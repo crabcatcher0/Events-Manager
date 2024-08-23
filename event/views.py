@@ -7,11 +7,8 @@ from django.contrib import messages
 from .models import OrganizeEvent
 from django.contrib.auth.decorators import login_required
 import requests
-import json
 from datetime import datetime
 from event_management.secrete import API_KEY
-import asyncio
-import aiohttp
 
 
 # Create your views here.
@@ -176,8 +173,32 @@ def browse_detail_event(request, id):
     return render(request, "detail_event.html", context)
 
 
+
 def volunteer(request):
     return render(request, "volunteer.html")
 
+
+
 def all_volunteer(request):
     return render(request, "all_volunteer.html")
+
+
+@login_required
+def edit_events(request, pk):
+    event = get_object_or_404(OrganizeEvent, pk=pk)
+    if request.method == 'POST':
+        form = OrganizeEventForm(request.POST, instance=event)
+        if form.is_valid():
+            form.save()
+            return redirect('detail_events', id=event.pk)
+    else:
+        form = OrganizeEventForm(instance=event)
+        
+    return render(request, 'edit_event.html', {'form': form}) 
+
+
+@login_required
+def delete_event(request, pk):
+    event = get_object_or_404(OrganizeEvent, pk=pk)
+    event.delete()
+    return redirect('account', id=request.user.id)

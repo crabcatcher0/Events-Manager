@@ -13,6 +13,9 @@ urlpatterns = [
     path('detail_events/<int:id>/', browse_detail_event, name='detail_events'),
     path('volunteer/', volunteer, name='volunteer'),
     path('all_volunteer/', all_volunteer, name='all_volunteer'),
+    path('edit_event/<int:pk>/', edit_events, name='edit_event'),
+    path('delete_event/<int:pk>/', delete_event, name='delete_event')
+
 
 
 ]
